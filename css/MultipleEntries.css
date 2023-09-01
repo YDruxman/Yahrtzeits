@@ -1,0 +1,22 @@
+.invalid {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e") !important;
+    border-color: var(--bs-form-invalid-border-color) !important;
+    box-shadow: 0 0 0 .25rem rgba(var(--bs-danger-rgb),.25) !important;
+}
+
+@media (min-width: 773px) {
+    #relatedToContainer {
+        margin-right: 3rem !important; /* Remove margin on smaller screens to prevent wrapping issues */
+    }
+}
+
+.progress {
+    height: 2em;
+}
+.progress-stacked {
+    height: 2em;
+}
+/*
+759 <= x <= 767
+
+*/

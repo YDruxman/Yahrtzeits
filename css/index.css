@@ -1,0 +1,21 @@
+.menu_header
+{
+    height: 20vh;
+    padding: 8vh;
+}
+.box
+{
+    height: 80vh;
+    display: flex;
+}
+.box > div
+{
+    height: 100%;
+    width: 50%;
+}
+.box > div > button
+{
+    height: 100%;
+    width: 100%;
+    font-size: 2em;
+}
