@@ -73,18 +73,27 @@ session_start();
         </div>
 
         <!-- Hebrew Date -->
-        <div class="d-flex flex-wrap justify-content-center gap-4" id="hebrew-dateGroup">
-            <div class="input-group">
-                <div class="input-group-text">Hebrew Month</div>
-                <input type="text" id="hebrew-hebrewMonth" class="form-control" placeholder="Month" aria-label="Server">
+        <div class="d-flex flex-row flex-wrap justify-content-center gap-4" id="hebrew-dateGroup">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-text">Hebrew Month</div>
+                    <input type="text" id="hebrew-hebrewMonth" class="form-control" placeholder="Month"
+                           aria-label="Server">
+                </div>
             </div>
-            <div class="input-group">
-                <div class="input-group-text">Hebrew Day</div>
-                <input type="text" id="hebrew-hebrewDay" class="form-control" placeholder="##" aria-label="Username">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-text">Hebrew Day</div>
+                    <input type="text" id="hebrew-hebrewDay" class="form-control" placeholder="##"
+                           aria-label="Username">
+                </div>
             </div>
-            <div class="input-group">
-                <div class="input-group-text">Hebrew Year</div>
-                <input type="text" id="hebrew-hebrewYear" class="form-control" placeholder="####" aria-label="Username">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-text">Hebrew Year</div>
+                    <input type="text" id="hebrew-hebrewYear" class="form-control" placeholder="####"
+                           aria-label="Username">
+                </div>
             </div>
         </div>
 
