@@ -6,7 +6,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Yahrzeit Calendar Event Creator</title>
+    <title>Yahrtzeit Calendar Event Creator</title>
     <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" rel="stylesheet">
     <link href="../css/MultipleEntries.css" rel="stylesheet" type="text/css">
@@ -40,8 +40,6 @@ session_start();
                 <span class="input-group-text">Notes</span>
                 <input aria-label="Notes" class="form-control" id="notes" placeholder="Notes"
                        style="flex-grow: 4;" type="text">
-
-
             </div>
         </div>
         <div class="d-flex flex-row flex-wrap column-gap-5 row-gap-4 mb-4">
@@ -62,27 +60,45 @@ session_start();
             </div>
         </div>
 
+        <div class="d-flex flex-wrap justify-content-center gap-4 mx-auto my-3 w-100 mt-4">
+            <input type="radio" class="btn-check" name="dateOptions" id="hebrew-dateOption" autocomplete="off"
+                   checked>
+            <label class="btn btn-outline-primary" for="hebrew-dateOption">Hebrew Date</label>
+
+            <input type="radio" class="btn-check" name="dateOptions" id="english-dateOption" autocomplete="off">
+            <label class="btn btn-outline-primary" for="english-dateOption">English Date</label>
+
+            <input type="radio" class="btn-check" name="dateOptions" id="combo-dateOption" autocomplete="off">
+            <label class="btn btn-outline-primary" for="combo-dateOption">Combo Date</label>
+        </div>
+
         <!-- Hebrew Date -->
-        <div class="input-group mb-4">
-            <span class="input-group-text">Hebrew Month</span>
-            <input type="text" class="form-control" placeholder="Month" aria-label="Server">
-            <span class="input-group-text">Hebrew Day</span>
-            <input type="text" class="form-control" placeholder="##" aria-label="Username">
-            <span class="input-group-text">Hebrew Year</span>
-            <input type="text" class="form-control" placeholder="####" aria-label="Username">
+        <div class="d-flex flex-wrap justify-content-center gap-4" id="hebrew-dateGroup">
+            <div class="input-group">
+                <div class="input-group-text">Hebrew Month</div>
+                <input type="text" id="hebrew-hebrewMonth" class="form-control" placeholder="Month" aria-label="Server">
+            </div>
+            <div class="input-group">
+                <div class="input-group-text">Hebrew Day</div>
+                <input type="text" id="hebrew-hebrewDay" class="form-control" placeholder="##" aria-label="Username">
+            </div>
+            <div class="input-group">
+                <div class="input-group-text">Hebrew Year</div>
+                <input type="text" id="hebrew-hebrewYear" class="form-control" placeholder="####" aria-label="Username">
+            </div>
         </div>
 
         <!-- English Date -->
-        <div class="d-flex flex-row flex-wrap">
+        <div class="d-flex flex-row flex-wrap d-none" id="english-dateGroup">
             <!-- Date -->
-            <div class="form-group mx-auto mb-4">
+            <div class="form-group mx-auto">
                 <div class="input-group">
-                    <label class="input-group-text" for="date">English Date</label>
-                    <input class="form-control" id="date" required type="date">
+                    <label class="input-group-text" for="english-date">English Date</label>
+                    <input class="form-control" id="english-date" required type="date">
                 </div>
             </div>
             <!-- After Sunset-->
-            <div class="form-group mx-auto mb-4">
+            <div class="form-group mx-auto">
                 <div class="input-group">
                     <span class="input-group-text">After Sunset</span>
                     <!-- After Sunset -->
@@ -94,7 +110,7 @@ session_start();
                     </div>
                     <!-- Before Sunset -->
                     <div class="input-group-text">
-                        <input aria-label="Before Sunset" checked class="form-check-input mt-0" name="afterSunset"
+                        <input aria-label="Before Sunset" checked class="form-check-input mt-0" name="beforeSunset"
                                type="radio"
                                value="false">
                         <label class="mx-2">No</label>
@@ -102,8 +118,32 @@ session_start();
                 </div>
             </div>
         </div>
+
+        <!-- Combo -->
+        <div class="d-flex flex-row flex-wrap d-none" id="combo-dateGroup">
+            <div class="form-group mx-auto">
+                <div class="input-group">
+                    <div class="input-group-text">Hebrew Month</div>
+                    <input type="text" id="combo-hebrewMonth" class="form-control" placeholder="Month" aria-label="Server">
+                </div>
+            </div>
+            <div class="form-group mx-auto">
+                <div class="input-group">
+                    <div class="input-group-text">Hebrew Day</div>
+                    <input type="text" id="combo-hebrewDay" class="form-control" placeholder="##" aria-label="Username">
+                </div>
+            </div>
+
+            <div class="form-group mx-auto">
+                <div class="input-group">
+                    <label class="input-group-text" for="combo-date">English Date</label>
+                    <input class="form-control" id="combo-date" required type="date">
+                </div>
+            </div>
+        </div>
+
         <!-- Submit/Restart -->
-        <div class="vstack gap-2 col-4 mx-auto">
+        <div class="vstack gap-2 col-4 mx-auto mt-5">
             <button class="btn btn-primary" type="submit">Submit</button>
             <button class="btn btn-secondary" type="reset">Reset</button>  <!-- Needs to clear validation -->
         </div>
