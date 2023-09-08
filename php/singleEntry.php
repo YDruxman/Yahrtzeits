@@ -73,7 +73,7 @@ session_start();
         </div>
 
         <!-- Hebrew Date -->
-        <div class="d-flex flex-row flex-wrap justify-content-center gap-4" id="hebrew-dateGroup">
+        <div class="d-flex flex-row flex-wrap justify-content-around gap-4" id="hebrew-dateGroup">
             <div class="form-group">
                 <div class="input-group">
                     <div class="input-group-text">Hebrew Month</div>
@@ -98,7 +98,7 @@ session_start();
         </div>
 
         <!-- English Date -->
-        <div class="d-flex flex-row flex-wrap d-none" id="english-dateGroup">
+        <div class="d-flex flex-row flex-wrap d-none justify-content-around gap-4" id="english-dateGroup">
             <!-- Date -->
             <div class="form-group mx-auto">
                 <div class="input-group">
@@ -129,7 +129,7 @@ session_start();
         </div>
 
         <!-- Combo -->
-        <div class="d-flex flex-row flex-wrap d-none" id="combo-dateGroup">
+        <div class="d-flex flex-row flex-wrap d-none justify-content-around gap-4" id="combo-dateGroup">
             <div class="form-group mx-auto">
                 <div class="input-group">
                     <div class="input-group-text">Hebrew Month</div>
