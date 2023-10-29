@@ -119,7 +119,7 @@ session_start();
                     </div>
                     <!-- Before Sunset -->
                     <div class="input-group-text">
-                        <input aria-label="Before Sunset" checked class="form-check-input mt-0" name="beforeSunset"
+                        <input aria-label="Before Sunset" checked class="form-check-input mt-0" name="afterSunset"
                                type="radio"
                                value="false">
                         <label class="mx-2">No</label>
