@@ -1,18 +1,18 @@
 const inputFields = [
-    { id: "prefix", regex: /^[a-zA-Z.]{1,15}$/},
-    { id: "first", regex: /^[a-zA-Z.]{1,25}$/ },
-    { id: "last", regex: /^[a-zA-Z.]{1,25}$/},
-    { id: "hebrewName", regex: /^[a-zA-Z.]{1,100}$/},
-    { id: "notes", regex: /^[a-zA-Z.'\- ]{1,100}$/},
-    { id: "relatedTo", regex: /^[a-zA-Z.'\- ]{1,100}$/},
-    { id: "source", regex: /^[a-zA-Z.'\- ]{1,100}$/},
-    { id: "hebrew-hebrewDay", regex: /^(0[1-9]|[1-2][0-9]|3[0-1])$/},
-    { id: "combo-hebrewDay", regex: /^(0[1-9]|[1-2][0-9]|3[0-1])$/}
-];
+    {id: "prefix", regex: /^[a-zA-Z.]{1,15}$/},
+    {id: "first", regex: /^[a-zA-Z.]{1,25}$/},
+    {id: "last", regex: /^[a-zA-Z.]{1,25}$/},
+    {id: "hebrewName", regex: /^[a-zA-Z.]{1,100}$/},
+    {id: "notes", regex: /^[a-zA-Z.'\- ]{1,100}$/},
+    {id: "relatedTo", regex: /^[a-zA-Z.'\- ]{1,100}$/},
+    {id: "source", regex: /^[a-zA-Z.'\- ]{1,100}$/},
+    {id: "hebrew-hebrewDay", regex: /^(0[1-9]|[1-2][0-9]|3[0-1])$/},
+    {id: "combo-hebrewDay", regex: /^(0[1-9]|[1-2][0-9]|3[0-1])$/}
+]
 
-function setUpValidate(){
-    inputFields.forEach(function (field){
-        let inputElement = document.getElementById(field.id);
+function setUpValidate() {
+    inputFields.forEach(function (field) {
+        let inputElement = document.getElementById(field.id)
         inputElement.addEventListener('change', event => {
             let inputValue = inputElement.value.trim();
 
@@ -36,6 +36,7 @@ function markAsValid(inputElement) {
     inputElement.classList.add("is-valid");
     inputElement.classList.remove("is-invalid");
 }
+
 function markAsInvalid(inputElement) {
     inputElement.classList.remove("is-valid");
     inputElement.classList.add("is-invalid");
@@ -56,6 +57,7 @@ function validateHebrewYear() {
 
 
 }
+
 setUpValidate()
 // Getting all the radio buttons
 const dateOptionsRadios = document.querySelectorAll('input[name="dateOptions"]');
@@ -65,7 +67,7 @@ const dateOptionsDivs = document.querySelectorAll('#hebrew-dateGroup, #english-d
 
 // Add an event listener to each radio button
 dateOptionsRadios.forEach((radio) => {
-    radio.addEventListener('change', function() {
+    radio.addEventListener('change', function () {
         if (this.checked) {
             // When radio button changes, hide all date options
             dateOptionsDivs.forEach((div) => {
@@ -78,5 +80,73 @@ dateOptionsRadios.forEach((radio) => {
             selectedOptionDiv.classList.remove('d-none');
             selectedOptionDiv.classList.add('d-flex');
         }
+    })
+})
+
+document.getElementById("yahrzeitForm").addEventListener("submit", submit)
+
+async function submit(e) {
+    e.preventDefault()
+    validateSubmit()
+    let p = await fetch();
+
+}
+
+function validateSubmit() {
+
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("yahrzeitForm");
+    const resultDiv = document.getElementById(); //TODO create the result div in html
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Create a JSON object from the form data
+        const formData = new FormData(form);
+        const formDataObject = {};
+        formData.forEach(function (value, key) {
+            formDataObject[key] = value;
+        });
+
+        // Make a POST request to the PHP backend with the JSON data
+        fetch("backend.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formDataObject),
+        })
+            .then(function (response) {
+                return response.json();
+            })
+            .then(data => {
+                // Handle the response from the backend
+                resultDiv.textContent = JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                resultDiv.textContent = "An error occurred while submitting the form.";
+            });
     });
 });
+
+
+
+/*
+Server
+<?php
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $json = file_get_contents("php://input");
+    $data = json_decode($json, true);
+
+    // Handle the received JSON data as needed (e.g., save it to a database)
+    // In this example, we'll just return the received data as a JSON response.
+    header("Content-Type: application/json");
+    echo json_encode($data);
+} else {
+    header("HTTP/1.0 405 Method Not Allowed");
+    echo "Method Not Allowed";
+}
+?>*/
