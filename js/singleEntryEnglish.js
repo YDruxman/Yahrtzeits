@@ -43,7 +43,7 @@ function markAsInvalid(inputElement) {
 }
 
 function validateHebrewYear() {
-    const currentYear = new Date().getFullYear()
+    const currentYear = new Date().getFullYear()  // TODO Change to Hebrew year
     const inputYearElement = document.getElementById("hebrew-hebrewYear")
     const inputYearValue = inputYearElement.value.trim()
     const regex = /^(?:18|19|20)\d{2}$/
@@ -83,19 +83,6 @@ dateOptionsRadios.forEach((radio) => {
     })
 })
 
-document.getElementById("yahrzeitForm").addEventListener("submit", submit)
-
-async function submit(e) {
-    e.preventDefault()
-    validateSubmit()
-    let p = await fetch();
-
-}
-
-function validateSubmit() {
-
-}
-
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("yahrzeitForm");
     const resultDiv = document.getElementById("result");
@@ -103,23 +90,37 @@ document.addEventListener("DOMContentLoaded", function () {
     form.addEventListener("submit", function (event) {
         event.preventDefault(); // Prevent the default form submission
 
+        // TODO Only submit form if valid
+
         // Create a JSON object from the form data
-        const formData = new FormData(form);
-        const formDataObject = {};
-        formData.forEach(function (value, key) {
-            formDataObject[key] = value;
+        var formData = {};
+        // Iterate over each input in the form
+        form.querySelectorAll('input').forEach(function(input) {
+            // Use input ID as key and input value as value
+
+            console.log(formData[input.id] = input.value); //TODO filter out by appropriate radio button. Meaning that the radio buttons that are NOT selcted should ot be included in the Dict
         });
 
+
+        // const formDataObject = {};
+        // formData.forEach(function (value, key) {
+        //     formDataObject[key] = value;
+        // });
+
         // Make a POST request to the PHP backend with the JSON data
-        fetch("backend.php", {
+        fetch("singleEntryResponse.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(formDataObject),
+            body: JSON.stringify(formData),
         })
             .then(function (response) {
-                return response.json();
+                if (!response.ok) {
+                    throw new Error("Didn't work");
+                }
+
+                return response.json()
             })
             .then(function (data) {
                 // Handle the response from the backend
