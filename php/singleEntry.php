@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+
 <!DOCTYPE html>
 <html data-bs-theme="dark" lang="en">
 <head>
@@ -150,7 +148,7 @@ session_start();
                 </div>
             </div>
         </div>
-
+        <div id="result"></div>
         <!-- Submit/Restart -->
         <div class="vstack gap-2 col-4 mx-auto mt-5">
             <button class="btn btn-primary" type="submit">Submit</button>

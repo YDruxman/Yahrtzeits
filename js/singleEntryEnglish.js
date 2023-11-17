@@ -1,13 +1,14 @@
 const inputFields = [
-    {id: "prefix", regex: /^[a-zA-Z.]{1,15}$/},
+    {id: "prefix", regex: /^[a-zA-Z.]{1,15}$/}, //TODO Should not be req
     {id: "first", regex: /^[a-zA-Z.]{1,25}$/},
     {id: "last", regex: /^[a-zA-Z.]{1,25}$/},
     {id: "hebrewName", regex: /^[a-zA-Z.]{1,100}$/},
-    {id: "notes", regex: /^[a-zA-Z.'\- ]{1,100}$/},
+    {id: "notes", regex: /^[a-zA-Z.'\- ]{1,100}$/}, //TODO Should allow number
     {id: "relatedTo", regex: /^[a-zA-Z.'\- ]{1,100}$/},
     {id: "source", regex: /^[a-zA-Z.'\- ]{1,100}$/},
     {id: "hebrew-hebrewDay", regex: /^(0[1-9]|[1-2][0-9]|3[0-1])$/},
     {id: "combo-hebrewDay", regex: /^(0[1-9]|[1-2][0-9]|3[0-1])$/}
+    //TODO make dropdown for hebrew moth
 ]
 
 function setUpValidate() {
@@ -24,7 +25,7 @@ function setUpValidate() {
 
         })
     }) //Add event listeners to actually trigger the check. Best to have it on a 'click away'
-    validateHebrewYear()
+    //validateHebrewYear()
 }
 
 function validateStringData(inputElement, regex) {
@@ -97,7 +98,7 @@ function validateSubmit() {
 
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("yahrzeitForm");
-    const resultDiv = document.getElementById(); //TODO create the result div in html
+    const resultDiv = document.getElementById("result");
 
     form.addEventListener("submit", function (event) {
         event.preventDefault(); // Prevent the default form submission
@@ -120,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(function (response) {
                 return response.json();
             })
-            .then(data => {
+            .then(function (data) {
                 // Handle the response from the backend
                 resultDiv.textContent = JSON.stringify(data, null, 2);
             })
@@ -133,19 +134,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-/*
-Server
-<?php
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $json = file_get_contents("php://input");
-    $data = json_decode($json, true);
 
-    // Handle the received JSON data as needed (e.g., save it to a database)
-    // In this example, we'll just return the received data as a JSON response.
-    header("Content-Type: application/json");
-    echo json_encode($data);
-} else {
-    header("HTTP/1.0 405 Method Not Allowed");
-    echo "Method Not Allowed";
-}
-?>*/
+
