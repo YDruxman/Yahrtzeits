@@ -14,56 +14,55 @@ function setUpValidate() {
     inputFields.forEach(function (field) {
         let inputElement = document.getElementById(field.id)
         inputElement.addEventListener('change', event => {
-            let inputValue = inputElement.value.trim();
-
+            let inputValue = inputElement.value.trim()
 
             if (validateStringData(inputValue, field.regex)) {
-                markAsValid(inputElement);
+                markAsValid(inputElement)
             } else {
-                markAsInvalid(inputElement);
+                markAsInvalid(inputElement)
             }
 
-        });
-    }); //Add event listeners to actually trigger the check. Best to have it on a 'click away'
-    validateHebrewYear();
+        })
+    }) //Add event listeners to actually trigger the check. Best to have it on a 'click away'
+    validateHebrewYear()
 }
 
-function validateStringData(inputElement, regex){
-    return regex.test(inputElement);
+function validateStringData(inputElement, regex) {
+    return regex.test(inputElement)
 }
 
 function markAsValid(inputElement) {
-    inputElement.classList.add("is-valid");
-    inputElement.classList.remove("is-invalid");
+    inputElement.classList.add("is-valid")
+    inputElement.classList.remove("is-invalid")
 }
 
 function markAsInvalid(inputElement) {
-    inputElement.classList.remove("is-valid");
-    inputElement.classList.add("is-invalid");
+    inputElement.classList.remove("is-valid")
+    inputElement.classList.add("is-invalid")
 }
 
 function validateHebrewYear() {
-    const currentYear = new Date().getFullYear();
-    const inputYearElement = document.getElementById("hebrew-hebrewYear");
-    const inputYearValue = inputYearElement.value.trim();
-    const regex = /^(?:18|19|20)\d{2}$/;
+    const currentYear = new Date().getFullYear()
+    const inputYearElement = document.getElementById("hebrew-hebrewYear")
+    const inputYearValue = inputYearElement.value.trim()
+    const regex = /^(?:18|19|20)\d{2}$/
     inputYearElement.addEventListener('change', event => {
         if (regex.test(inputYearValue) && currentYear >= parseInt(inputYearValue, 10))
             markAsValid(inputYearElement)
         else
             markAsInvalid(inputYearElement)
 
-    });
+    })
 
 
 }
 
 setUpValidate()
 // Getting all the radio buttons
-const dateOptionsRadios = document.querySelectorAll('input[name="dateOptions"]');
+const dateOptionsRadios = document.querySelectorAll('input[name="dateOptions"]')
 
 // Getting all the date options
-const dateOptionsDivs = document.querySelectorAll('#hebrew-dateGroup, #english-dateGroup, #combo-dateGroup');
+const dateOptionsDivs = document.querySelectorAll('#hebrew-dateGroup, #english-dateGroup, #combo-dateGroup')
 
 // Add an event listener to each radio button
 dateOptionsRadios.forEach((radio) => {
@@ -71,14 +70,14 @@ dateOptionsRadios.forEach((radio) => {
         if (this.checked) {
             // When radio button changes, hide all date options
             dateOptionsDivs.forEach((div) => {
-                div.classList.remove('d-flex');
-                div.classList.add('d-none');
-            });
+                div.classList.remove('d-flex')
+                div.classList.add('d-none')
+            })
 
             // Show the element that corresponds to the selected radio button
-            const selectedOptionDiv = document.querySelector('#' + this.id.replace('Option', 'Group'));
-            selectedOptionDiv.classList.remove('d-none');
-            selectedOptionDiv.classList.add('d-flex');
+            const selectedOptionDiv = document.querySelector('#' + this.id.replace('Option', 'Group'))
+            selectedOptionDiv.classList.remove('d-none')
+            selectedOptionDiv.classList.add('d-flex')
         }
     })
 })
