@@ -72,13 +72,28 @@
 
         <!-- Hebrew Date -->
         <div class="d-flex flex-row flex-wrap justify-content-around gap-4" id="hebrew-dateGroup">
-            <div class="form-group">
+            <div class="form-group mx-auto">
                 <div class="input-group">
                     <div class="input-group-text">Hebrew Month</div>
-                    <input type="text" id="hebrew-hebrewMonth" class="form-control" placeholder="Month"
-                           aria-label="Server">
+                    <select id="combo-hebrewMonth" class="form-control" aria-label="Server">
+                        <option selected>Choose a month...</option>
+                        <option value="1">Nisan</option>
+                        <option value="2">Iyar</option>
+                        <option value="3">Sivan</option>
+                        <option value="4">Tammuz</option>
+                        <option value="5">Av</option>
+                        <option value="6">Elul</option>
+                        <option value="7">Tishrei</option>
+                        <option value="8">Cheshvan</option>
+                        <option value="9">Kislev</option>
+                        <option value="10">Tevet</option>
+                        <option value="11">Shevat</option>
+                        <option value="12">Adar</option>
+                        <option value="12">AdarII</option>
+                    </select>
                 </div>
             </div>
+
             <div class="form-group">
                 <div class="input-group">
                     <div class="input-group-text">Hebrew Day</div>
@@ -131,9 +146,26 @@
             <div class="form-group mx-auto">
                 <div class="input-group">
                     <div class="input-group-text">Hebrew Month</div>
-                    <input type="text" id="combo-hebrewMonth" class="form-control" placeholder="Month" aria-label="Server">
+                    <select id="combo-hebrewMonth" class="form-control" aria-label="Server">
+                        <option selected>Choose a month...</option>
+                        <option value="1">Nisan</option>
+                        <option value="2">Iyar</option>
+                        <option value="3">Sivan</option>
+                        <option value="4">Tammuz</option>
+                        <option value="5">Av</option>
+                        <option value="6">Elul</option>
+                        <option value="7">Tishrei</option>
+                        <option value="8">Cheshvan</option>
+                        <option value="9">Kislev</option>
+                        <option value="10">Tevet</option>
+                        <option value="11">Shevat</option>
+                        <option value="12">Adar</option>
+                        <option value="12">AdarII</option>
+                    </select>
                 </div>
             </div>
+
+
             <div class="form-group mx-auto">
                 <div class="input-group">
                     <div class="input-group-text">Hebrew Day</div>
