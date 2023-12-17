@@ -13,7 +13,7 @@
 <body class="vh-100">
 <main class="text-center d-flex flex-column justify-content-center h-100">
     <h1 class="text-decoration-underline mb-5">Yahrzeit Calendar Event Creator</h1>
-    <form class="mx-auto w-75 needs-validation" id="yahrzeitForm" novalidate>
+    <form class="mx-auto w-75 needs-validation" id="yahrzeitForm" novalidate action="Response.php">
         <!-- English Name -->
         <div class="form-group mb-4">
             <div class="input-group flex-wrap">
@@ -187,6 +187,8 @@
             <button class="btn btn-secondary" type="reset">Reset</button>  <!-- Needs to clear validation -->
         </div>
     </form>
+
+    <a href="../html/ContactUs.html" class="btn btn-link mt-3"  >Contact Us</a>
 </main>
 <script crossorigin="anonymous"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"

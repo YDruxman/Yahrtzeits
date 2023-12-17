@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
     form.addEventListener("submit", function (event) {
         event.preventDefault(); // Prevent the default form submission
         let isFormValid = true
-        let needsRegexCheck = true //Avoids a unnecessary regex check and a marking of invalid to a tag that will already have it
+        let needsRegexCheck = true //Avoids an unnecessary regex check and a marking of invalid to a tag that will already have it
 
 
         //When none of the inputs are typed in, they are not valid or invalid. But if a user tries submitting them as is, they should all be marked as invalid.
@@ -119,7 +119,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-        // TODO Only submit form if valid. THing to fix: The form by default when everything is empty is not valid or invalid- which is a problem. Even though it could be fixed by checking for valid vs looking for invalid, none the less when clicked and left empty the form should be red
 
 
         // Create a JSON object from the form data
@@ -151,7 +150,7 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .then(function (data) {
                 // Handle the response from the backend
-                resultDiv.textContent = JSON.stringify(data, null, 2);
+                resultDiv.textContent = JSON.stringify(data, null, 2); //TODO Modify JSON Data so that it does not look JSONy
             })
             .catch(error => {
                 console.error("Error:", error);
