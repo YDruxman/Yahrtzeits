@@ -35,10 +35,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $notes = $data['notes'];
     $relatedTo = $data['relatedTo'];
     $source = $data['source'];
-    $hebrewYear = $data['hebrewYear']; //This needs to be adjusted so that only the right hebrew year gets checked from the diff combo options
+    $hebrewYear = $data['hebrewYear'];
+    $hebrewMonth = $data['hebrewMonth'];//This needs to be adjusted so that only the right hebrew year gets checked from the diff combo options
     $hebrewDay = $data['hebrewDay'];//This needs to be adjusted so that only the right hebrew day gets checked from the diff combo options
-    $englishDate = $data['englishDate'];  //This needs to be adjusted so that only the right hebrew day gets checked from the diff combo options
-    $afterSunset = $data['afterSunset'];
+
 
     $stmt = $conn->prepare("INSERT INTO `Memorial Registry` (prefix, firstName, lastName, hebrewName, note, relatedTo, source, hebrewYear, hebrewDate, englishDate, afterSunset) VALUES (?, ?, ?, ?)");
     $stmt->bind_param("ssss",$prefix , $firstName, $lastName, $hebrewName, $notes, $relatedTo, $source, $hebrewYear, $hebrewDay, $englishDate, $afterSunset);
