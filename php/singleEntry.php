@@ -75,7 +75,7 @@
             <div class="form-group mx-auto">
                 <div class="input-group">
                     <div class="input-group-text">Hebrew Month</div>
-                    <select id="combo-hebrewMonth" class="form-control" aria-label="Server">
+                    <select id="hebrew-hebrewMonth" class="form-control" aria-label="Server">
                         <option selected>Choose a month...</option>
                         <option value="1">Nisan</option>
                         <option value="2">Iyar</option>
@@ -193,6 +193,8 @@
 <script crossorigin="anonymous"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/HebCal.js"></script>
 <script src="../js/singleEntryEnglish.js"></script>
+
 </body>
 </html>
