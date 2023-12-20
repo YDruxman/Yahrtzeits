@@ -23,15 +23,14 @@ class HebCal {
 
     // Retrieves data from hebcal.com with the given subdirectory and body
     async testTheData() {
-        let myHebCal = new HebCal();
-        let first = await myHebCal.testTheDate()
 
-        console.log(first)
+        let first = await myHebCal.generateHebrewDate(27, 7, 2000, true)
+        console.log(first.items[0].hdate)
+
 
     }
 
     async generateHebrewDate(day, month, year, afterSun) {
-
         const query = `n1=Ploni Almoni&t1=Yahrzeit&d1=${day}&m1=${month}&y1=${year}&s1=${afterSun}`
         return this.#requestData('yahrzeit', 'cfg=json&g2h=1' + query)
 
@@ -82,6 +81,6 @@ class HebCal {
 
 }
 
-// let myHebCal = new HebCal();
-// myHebCal.testTheData() .then(() => console.log("Test completed"))
-//     .catch(error => console.error(error));
+let myHebCal = new HebCal();
+myHebCal.testTheData() .then(() => console.log("Test completed"))
+    .catch(error => console.error(error));
