@@ -7,9 +7,10 @@ const submissionFields = [
     {id: "relatedTo"},
     {id: "source"}
 ];
+let hebYear;
 let hebMonth;
 let hebDay;
-let hebYear;
+
 const resultDiv = document.getElementById("result");
 
 
@@ -69,9 +70,11 @@ function GetHebDateFromEngDate(resultDiv) {
             resultDiv.textContent = "There was an issue getting the Hebrew Date";
         });
     let hebrewDateParts = hebrewDate.split(" ");
-    hebDay = hebrewDateParts[0];
-    hebMonth = hebrewDateParts[1];
     hebYear = hebrewDateParts[2];
+    hebMonth = hebrewDateParts[1];
+    hebDay = hebrewDateParts[0];
+
+
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -93,9 +96,11 @@ document.addEventListener("DOMContentLoaded", function () {
             //At this point the submit button has been pressed and ALL the boxes have been validated.
 
             if(currentSelectedRadio === 'hebrew-dateOption'){
+                hebYear = document.getElementById("hebrew-hebrewYear")
                 hebMonth = document.getElementById("hebrew-hebrewMonth")
                 hebDay = document.getElementById("hebrew-hebrewDay")
-                hebMonth = document.getElementById("hebrew-hebrewYear")
+
+
             }
 
             else if (currentSelectedRadio === 'english-dateOption') {
@@ -111,9 +116,10 @@ document.addEventListener("DOMContentLoaded", function () {
             submissionFields.forEach(function (field) {
                 formData[field.id] = document.getElementById(field.id)
             });
+            formData["Hebrew Year"] = hebYear
             formData["Hebrew Month"] = hebMonth
             formData["Hebrew Day"] = hebDay
-            formData["Hebrew Year"] = hebYear
+
 
             console.log(formData)
 

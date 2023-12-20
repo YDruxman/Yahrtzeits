@@ -6,7 +6,7 @@ session_start();
 $servername = "localhost";
 $username = "DannyC";
 $password = "qwerty";
-$dbname = "AuthorizedUsers";
+$dbname = "Yortzeit";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
@@ -36,12 +36,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $relatedTo = $data['relatedTo'];
     $source = $data['source'];
     $hebrewYear = $data['hebrewYear'];
-    $hebrewMonth = $data['hebrewMonth'];//This needs to be adjusted so that only the right hebrew year gets checked from the diff combo options
-    $hebrewDay = $data['hebrewDay'];//This needs to be adjusted so that only the right hebrew day gets checked from the diff combo options
+    $hebrewMonth = $data['hebrewMonth'];
+    $hebrewDay = $data['hebrewDay'];
 
 
-    $stmt = $conn->prepare("INSERT INTO `Memorial Registry` (prefix, firstName, lastName, hebrewName, note, relatedTo, source, hebrewYear, hebrewDate, englishDate, afterSunset) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("ssss",$prefix , $firstName, $lastName, $hebrewName, $notes, $relatedTo, $source, $hebrewYear, $hebrewDay, $englishDate, $afterSunset);
+    $stmt = $conn->prepare("INSERT INTO `Memorial Registry` (Prefix, FirstName, LastName, HebrewName, Notes, RelatedTo, Source, HebrewYear, HebrewMonth, HebrewDay) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssssssisi",$prefix , $firstName, $lastName, $hebrewName, $notes, $relatedTo, $source, $hebrewYear, $hebrewMonth, $hebrewDay);
 
     $stmt->execute();
     $stmt->close();
