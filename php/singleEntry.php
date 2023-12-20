@@ -194,7 +194,9 @@
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../js/HebCal.js"></script>
-<script src="../js/singleEntryEnglish.js"></script>
+<script src="../js/SingleEntry/singleEntrySubmission.js"></script>
+<script src="../js/SingleEntry/SingleEntryValidation.js"></script>
+<script src="../js/SingleEntry/RadioButtonEvent.js"></script>
 
 </body>
 </html>
