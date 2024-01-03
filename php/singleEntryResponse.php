@@ -8,12 +8,10 @@ $username = "DannyC";
 $password = "qwerty";
 $dbname = "Yortzeit";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+$conn = @mysqli_connect($servername, $username, $password, $dbname);
+if(!$conn){
+    die("Connection failed: " . mysqli_connect_error());
 }
-
-
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $json = file_get_contents("php://input");  //using this instead of the traditional SuperVariable POST bc we are dealing with JSON
@@ -39,13 +37,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $hebrewMonth = $data['hebrewMonth'];
     $hebrewDay = $data['hebrewDay'];
 
-
-    $stmt = $conn->prepare("INSERT INTO `Memorial Registry` (Prefix, FirstName, LastName, HebrewName, Notes, RelatedTo, Source, HebrewYear, HebrewMonth, HebrewDay) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssssssisi",$prefix , $firstName, $lastName, $hebrewName, $notes, $relatedTo, $source, $hebrewYear, $hebrewMonth, $hebrewDay);
-
-    $stmt->execute();
-    $stmt->close();
-
+    $stmt = mysqli_stmt_init($conn);
+    mysqli_stmt_prepare($stmt, "INSERT INTO `Memorial Registry` (Prefix, FirstName, LastName, HebrewName, Notes, RelatedTo, Source, HebrewYear, HebrewMonth, HebrewDay) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    mysqli_stmt_bind_param($stmt, "sssssssisi", $prefix, $firstName, $lastName, $hebrewName, $notes, $relatedTo, $source, $hebrewYear, $hebrewMonth, $hebrewDay);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    mysqli_close($conn);
+    
     // In this example, we'll just return the received data as a JSON response.
     header("Content-Type: application/json"); //Shows that this is 'returning' ie that its response to the frontend will be in JSON
     echo json_encode($data);
