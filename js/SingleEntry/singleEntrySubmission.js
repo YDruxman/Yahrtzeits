@@ -1,12 +1,4 @@
-const submissionFields = [
-    {id: "prefix"},
-    {id: "first"},
-    {id: "last"},
-    {id: "hebrewName"},
-    {id: "notes"},
-    {id: "relatedTo"},
-    {id: "source"}
-];
+const submissionFields = [{id: "prefix"}, {id: "first"}, {id: "last"}, {id: "hebrewName"}, {id: "notes"}, {id: "relatedTo"}, {id: "source"}];
 let hebYear;
 let hebMonth;
 let hebDay;
@@ -44,15 +36,12 @@ function PreSubmissionValidation() {
 async function getHebrewDateFromAPI(day, month, year) {
     let response = await myHebCal.generateHebrewDate(day, month, year)
     return response.items[0].hdate //ignore this warning
-
-
 }
 
 function GetHebDateFromEngDate(resultDiv) {
     let hebrewDate;
     let dateValue = document.getElementById('english-date').value;
     //let afterSunBool = document.getElementById('').value;
-
 
     // Split the date into year, month, and day
     let dateParts = dateValue.split('-');
@@ -73,8 +62,6 @@ function GetHebDateFromEngDate(resultDiv) {
     hebYear = hebrewDateParts[2];
     hebMonth = hebrewDateParts[1];
     hebDay = hebrewDateParts[0];
-
-
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -85,9 +72,6 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault(); // Prevent the default form submission
         let isFormValid = PreSubmissionValidation();
 
-
-
-
         //Prevent Form Submission
         if (!isFormValid) {
             resultDiv.textContent = "Please correct the errors before submitting.";
@@ -95,23 +79,18 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             //At this point the submit button has been pressed and ALL the boxes have been validated.
 
-            if(currentSelectedRadio === 'hebrew-dateOption'){
+            if (currentSelectedRadio === 'hebrew-dateOption') {
                 hebYear = document.getElementById("hebrew-hebrewYear")
                 hebMonth = document.getElementById("hebrew-hebrewMonth")
                 hebDay = document.getElementById("hebrew-hebrewDay")
 
-
-            }
-
-            else if (currentSelectedRadio === 'english-dateOption') {
+            } else if (currentSelectedRadio === 'english-dateOption') {
                 GetHebDateFromEngDate();
-            }
-            else if(currentSelectedRadio === 'english-dateOption'){
+            } else if (currentSelectedRadio === 'english-dateOption') {
                 console.log("Finish this calc") //TODO Fin
             }
             // Create a JSON object from the form data
             let formData = {};
-
 
             submissionFields.forEach(function (field) {
                 formData[field.id] = document.getElementById(field.id)
@@ -119,19 +98,14 @@ document.addEventListener("DOMContentLoaded", function () {
             formData["Hebrew Year"] = hebYear
             formData["Hebrew Month"] = hebMonth
             formData["Hebrew Day"] = hebDay
-
-
+            
             console.log(formData)
-
-
 
             // Make a POST request to the PHP backend with the JSON data
             fetch("singleEntryResponse.php", {
-                method: "POST",
-                headers: {
+                method: "POST", headers: {
                     "Content-Type": "application/json",
-                },
-                body: JSON.stringify(formData),
+                }, body: JSON.stringify(formData),
             })
                 .then(function (response) {
                     if (!response.ok) {
@@ -151,8 +125,3 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
-
-
-
-
-
