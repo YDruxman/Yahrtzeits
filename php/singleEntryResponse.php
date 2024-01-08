@@ -1,14 +1,17 @@
 <?php
+session_start();
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-session_start();
-$servername = "localhost";
-$username = "DannyC";
-$password = "qwerty";
-$dbname = "Yortzeit";
 
-$conn = @mysqli_connect($servername, $username, $password, $dbname);
+$servername = "127.0.0.1";
+$username = "root";
+$password = '';
+$dbname = "Yortzeit";
+$port = 3306;
+
+$conn = @mysqli_connect($servername, $username, $password, $dbname, $port);
 if(!$conn){
     die("Connection failed: " . mysqli_connect_error());
 }

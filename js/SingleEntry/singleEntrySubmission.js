@@ -96,9 +96,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 let element = document.getElementById(field.id);
                 formData[field.id] = element.value;
             });
-            formData["Hebrew Year"] = hebYear
-            formData["Hebrew Month"] = hebMonth
-            formData["Hebrew Day"] = hebDay
+            formData["hebrewYear"] = hebYear
+            formData["hebrewMonth"] = hebMonth
+            formData["hebrewDay"] = hebDay
             
             console.log(formData)
             console.log(JSON.stringify(formData))
