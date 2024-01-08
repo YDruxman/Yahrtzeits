@@ -10,19 +10,38 @@
 </head>
 <body class="vh-100">
 <main class="text-center d-flex flex-column justify-content-center h-100">
+
+    <?php
+
+    if(isset($_GET["error"])) {
+        if ($_GET["error"] == "emptyFields") {
+            echo "<div class=\"alert alert-danger text-center\"><p> Fill in all fields. </p></div>";
+        }
+        if ($_GET["error"] == "invalidEmail") {
+            echo "<div class=\"alert alert-danger text-center\"><p> Please enter a valid email. </p></div>";
+        }
+        if ($_GET["error"] == "mailNotSent") {
+            echo "<div class=\"alert alert-danger text-center\"><p> There was an issue sending your message! Try again. </p></div>";
+        }
+        if ($_GET["error"] == "mailSent") {
+            echo "<div class=\"alert alert-success text-center\"><p> Message Sent. </p></div>";
+        }
+    }
+    ?>
+
     <h1 class="text-decoration-underline mb-5">Contact Us</h1>
-    <form class="mx-auto w-75" action="your-server-side-script.php" method="POST">
+    <form class="mx-auto w-75" action="ProcessEmail.php" method="POST">
         <!-- Name Input -->
         <div class="mb-3">
-            <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
         </div>
         <!-- Email Input -->
         <div class="mb-3">
-            <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
         </div>
         <!-- Message Textarea -->
         <div class="mb-3">
-            <textarea class="form-control" id="message" rows="3" placeholder="Your Message"></textarea>
+            <textarea class="form-control" id="message" name = message rows="3" placeholder="Your Message"></textarea>
         </div>
         <!-- Submit Button -->
         <button type="submit" class="btn btn-primary">Send Message</button>
@@ -34,3 +53,6 @@
 <!-- Add any additional JS files here -->
 </body>
 </html>
+
+
+

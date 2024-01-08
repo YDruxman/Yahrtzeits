@@ -188,7 +188,7 @@
         </div>
     </form>
 
-    <a href="../html/ContactUs.html" class="btn btn-link mt-3"  >Contact Us</a>
+    <a href="ContactUs.php" class="btn btn-link mt-3"  >Contact Us</a>
 </main>
 <script crossorigin="anonymous"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"

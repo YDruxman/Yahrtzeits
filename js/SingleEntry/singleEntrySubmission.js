@@ -80,9 +80,9 @@ document.addEventListener("DOMContentLoaded", function () {
             //At this point the submit button has been pressed and ALL the boxes have been validated.
 
             if (currentSelectedRadio === 'hebrew-dateOption') {
-                hebYear = document.getElementById("hebrew-hebrewYear")
-                hebMonth = document.getElementById("hebrew-hebrewMonth")
-                hebDay = document.getElementById("hebrew-hebrewDay")
+                hebYear = document.getElementById("hebrew-hebrewYear").value
+                hebMonth = document.getElementById("hebrew-hebrewMonth").value
+                hebDay = document.getElementById("hebrew-hebrewDay").value
 
             } else if (currentSelectedRadio === 'english-dateOption') {
                 GetHebDateFromEngDate();
@@ -93,14 +93,16 @@ document.addEventListener("DOMContentLoaded", function () {
             let formData = {};
 
             submissionFields.forEach(function (field) {
-                formData[field.id] = document.getElementById(field.id)
+                let element = document.getElementById(field.id);
+                formData[field.id] = element.value;
             });
             formData["Hebrew Year"] = hebYear
             formData["Hebrew Month"] = hebMonth
             formData["Hebrew Day"] = hebDay
             
             console.log(formData)
-
+            console.log(JSON.stringify(formData))
+            console.log("HI")
             // Make a POST request to the PHP backend with the JSON data
             fetch("singleEntryResponse.php", {
                 method: "POST", headers: {
@@ -113,14 +115,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                     return response.json()
                 })
-                .then(function (data) {
+                /*.then(function (data) {
                     // Handle the response from the backend
                     resultDiv.textContent = JSON.stringify(data, null, 2); //TODO Modify JSON Data so that it does not look JSONy
                 })
                 .catch(error => {
                     console.error("Error:", error);
                     resultDiv.textContent = "An error occurred while submitting the form.";
-                });
+                });*/
         }
     });
 
