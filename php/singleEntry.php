@@ -94,14 +94,14 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group mx-auto">
                 <div class="input-group">
                     <div class="input-group-text">Hebrew Day</div>
                     <input type="text" id="hebrew-hebrewDay" class="form-control" placeholder="##"
                            aria-label="Username">
                 </div>
             </div>
-            <div class="form-group">
+            <div class="form-group mx-auto">
                 <div class="input-group">
                     <div class="input-group-text">Hebrew Year</div>
                     <input type="text" id="hebrew-hebrewYear" class="form-control" placeholder="####"
