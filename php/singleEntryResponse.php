@@ -11,10 +11,17 @@ $password = '';
 $dbname = "Yortzeit";
 $port = 3306;
 
-$conn = @mysqli_connect($servername, $username, $password, $dbname, $port);
-if(!$conn){
-    die("Connection failed: " . mysqli_connect_error());
+try{
+    $conn = @mysqli_connect($servername, $username, $password, $dbname, $port);
+    if(!$conn){
+        die("Connection failed: " . mysqli_connect_error());
+    }
 }
+catch (Error $error){
+    header("HTTP/1.0 405"); //TODO Set response to !ok?
+    echo "Issue Connecting to the DataBase";
+}
+
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $json = file_get_contents("php://input");  //using this instead of the traditional SuperVariable POST bc we are dealing with JSON
@@ -55,5 +62,3 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     echo "Method Not Allowed";
 }
 
-
-?>

@@ -102,27 +102,27 @@ document.addEventListener("DOMContentLoaded", function () {
             
             console.log(formData)
             console.log(JSON.stringify(formData))
-            console.log("HI")
             // Make a POST request to the PHP backend with the JSON data
             fetch("singleEntryResponse.php", {
                 method: "POST", headers: {
                     "Content-Type": "application/json",
                 }, body: JSON.stringify(formData),
             })
-                .then(function (response) {
+                .then(async function (response) {
                     if (!response.ok) {
-                        throw new Error("Didn't work");
+                        throw new Error(await response.text()); //Allows the error to be shown as text vs trying to force in into a JSON which will result in an ambiguous syntax error
                     }
-                    return response.json()
+                    let data = await response.json()
+                    resultDiv.textContent = JSON.stringify(data, null, 2); //TODO Modify JSON Data so that it does not look JSONy
                 })
                 /*.then(function (data) {
                     // Handle the response from the backend
                     resultDiv.textContent = JSON.stringify(data, null, 2); //TODO Modify JSON Data so that it does not look JSONy
-                })
+                })*/
                 .catch(error => {
                     console.error("Error:", error);
                     resultDiv.textContent = "An error occurred while submitting the form.";
-                });*/
+                });
         }
     });
 
