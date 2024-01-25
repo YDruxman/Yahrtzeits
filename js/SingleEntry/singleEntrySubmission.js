@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
             formData["hebrewYear"] = hebYear
             formData["hebrewMonth"] = hebMonth
             formData["hebrewDay"] = hebDay
-            
+
             console.log(formData)
             console.log(JSON.stringify(formData))
             // Make a POST request to the PHP backend with the JSON data
