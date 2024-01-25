@@ -64,6 +64,32 @@ function GetHebDateFromEngDate(resultDiv) {
     hebDay = hebrewDateParts[0];
 }
 
+async function fetchSingleEntryResponse(formData) {
+    const response = await fetch("singleEntryResponse.php", {
+        method: "POST", headers: {
+            "Content-Type": "application/json",
+        }, body: JSON.stringify(formData),
+    })
+    if (!response.ok) {
+        throw new Error(await response.text()); //Allows the error to be shown as text vs trying to force in into a JSON which will result in an ambiguous syntax error
+    }
+    return await response.json();
+}
+
+
+async function doA (formData) {
+    try {
+
+        console.log("Inside doA() before the await")
+        const data = await fetchSingleEntryResponse(formData);
+        console.log("Inside doA() after the await")
+        resultDiv.textContent = JSON.stringify(data, null, 2); //TODO Modify JSON Data so that it does not look JSONy
+    } catch (error) {
+        console.error("Error:", error);
+        resultDiv.textContent = "An error occurred while submitting the form.";
+    }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     const myHebCal = new HebCal()
     const form = document.getElementById("yahrzeitForm");
@@ -103,26 +129,11 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log(formData)
             console.log(JSON.stringify(formData))
             // Make a POST request to the PHP backend with the JSON data
-            fetch("singleEntryResponse.php", {
-                method: "POST", headers: {
-                    "Content-Type": "application/json",
-                }, body: JSON.stringify(formData),
-            })
-                .then(async function (response) {
-                    if (!response.ok) {
-                        throw new Error(await response.text()); //Allows the error to be shown as text vs trying to force in into a JSON which will result in an ambiguous syntax error
-                    }
-                    let data = await response.json()
-                    resultDiv.textContent = JSON.stringify(data, null, 2); //TODO Modify JSON Data so that it does not look JSONy
-                })
-                /*.then(function (data) {
-                    // Handle the response from the backend
-                    resultDiv.textContent = JSON.stringify(data, null, 2); //TODO Modify JSON Data so that it does not look JSONy
-                })*/
-                .catch(error => {
-                    console.error("Error:", error);
-                    resultDiv.textContent = "An error occurred while submitting the form.";
-                });
+            void doA(formData);
+            // a
+
+            console.log("after doA")
+        //     ///
         }
     });
 
