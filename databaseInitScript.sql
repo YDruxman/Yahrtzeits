@@ -1,9 +1,8 @@
-CREATE DATABASE IF NOT EXISTS Yahrzeits;
-USE
-Yahrzeit;
+CREATE DATABASE IF NOT EXISTS YahrzeitsDatabase;
+USE YahrzeitsDatabase;
 
 DROP TABLE IF EXISTS HebrewMonths;
-DROP TABLE IF EXISTS Yahrzeit;
+DROP TABLE IF EXISTS Yahrzeits;
 
 CREATE TABLE HebrewMonths
 (
@@ -13,7 +12,7 @@ CREATE TABLE HebrewMonths
     PRIMARY KEY (Id)
 );
 
-CREATE TABLE Yahrzeit
+CREATE TABLE Yahrzeits
 (
     Id            INT AUTO_INCREMENT,
     Prefix        VARCHAR(25),
