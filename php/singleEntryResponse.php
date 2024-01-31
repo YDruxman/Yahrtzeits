@@ -18,8 +18,8 @@ try{
     }
 }
 catch (Error $error){
-    header("HTTP/1.0 405"); //TODO Set response to !ok?
-    echo "Issue Connecting to the DataBase";
+    http_response_code(500);
+    return;
 }
 
 
