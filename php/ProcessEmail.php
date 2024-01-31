@@ -11,12 +11,12 @@ $mail->SMTPDebug=0;
 $mail->Host = 'smtp.gmail.com';
 $mail->Port = 465;
 $mail->Username = 'dontlikeads@gmail.com';
-$mail->Password = 'kkilujisnsqnrpwg';
+$mail->Password = 'gvfeelogsxtwaibe';
 try {
     $mail->setFrom('dontlikeads@gmail.com');
 } catch (phpmailerException $e) {
-    echo $e->errorMessage();
-    header("Location: ContactUs.php?error=mailNotSent");
+    echo $e-> errorMessage();
+    //header("Location: ContactUs.php?error=mailNotSent");
 }
 $mail->addAddress('dontlikeads@gmail.com');
 $mail->Subject = 'Contact Us Email';
@@ -24,7 +24,7 @@ $mail->Subject = 'Contact Us Email';
 function invalidEmail($email): bool
 {
     $result = false;
-    if (! filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $result = true;
     }
     return $result;
@@ -50,12 +50,13 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['message']))
     try {
         if (!$mail->send()) {
             echo "ERROR: " . $mail->ErrorInfo;
-            header("Location: ContactUs.php?error=mailNotSent");
+            //header("Location: ContactUs.php?error=mailNotSent");
         } else {
             //echo "SUCCESS";
             header("Location: ContactUs.php?error=mailSent");
         }
     } catch (phpmailerException $e) {
+        echo $e-> errorMessage();
     }
     exit();
 
