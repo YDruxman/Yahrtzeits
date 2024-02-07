@@ -19,8 +19,7 @@
             <div class="input-group flex-wrap">
                 <span class="input-group-text">English Name</span>
                 <input aria-label="Prefix" class="form-control" id="prefix" placeholder="Prefix" type="text">
-                <input aria-label="First Name" class="form-control" id="first" placeholder="First"
-                       type="text" required>
+                <input aria-label="First Name" class="form-control" id="first" placeholder="First"type="text" required>
                 <input aria-label="Last Name" class="form-control" id="last" placeholder="Last" type="text">
             </div>
         </div>
@@ -58,7 +57,7 @@
             </div>
         </div>
 
-        <div class="d-flex flex-wrap justify-content-center gap-4 mx-auto my-3 w-100 mt-4">
+        <div class="d-flex flex-wrap justify-content-center gap-4 mx-auto my-4 w-100">
             <input type="radio" class="btn-check" name="dateOptions" id="hebrew-dateOption" autocomplete="off"
                    checked>
             <label class="btn btn-outline-primary" for="hebrew-dateOption">Hebrew Date</label>
@@ -182,13 +181,15 @@
         </div>
         <div id="result"></div>
         <!-- Submit/Restart -->
-        <div class="vstack gap-2 col-4 mx-auto mt-5">
+        <div class="vstack gap-3 col-4 mx-auto mt-5">
             <button class="btn btn-primary" type="submit">Submit</button>
             <button class="btn btn-secondary" type="reset">Reset</button>  <!-- Needs to clear validation -->
+            <a href="ContactUs.php">
+                <button class="btn btn-outline-primary w-100" type="button">Contact Us</button>
+            </a>
         </div>
     </form>
 
-    <a href="ContactUs.php" class="btn btn-link mt-3"  >Contact Us</a>
 </main>
 <script crossorigin="anonymous"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
