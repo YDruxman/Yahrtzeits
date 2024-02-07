@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         //Prevent Form Submission
         if (!isFormValid) {
-            resultDiv.textContent = "Please correct the errors before submitting.";
+            resultDiv.textContent = "Please correct the field errors before submitting";
             resultDiv.style.display = 'block';
         } else {
             //At this point the submit button has been pressed and ALL the boxes have been validated.
