@@ -58,7 +58,7 @@
             </div>
         </div>
 
-        <div class="d-flex flex-wrap justify-content-center gap-4 mx-auto my-3 w-100 mt-4">
+        <div class="d-flex flex-wrap justify-content-center gap-4 mx-auto my-4 w-100">
             <input type="radio" class="btn-check" name="dateOptions" id="hebrew-dateOption" autocomplete="off"
                    checked>
             <label class="btn btn-outline-primary" for="hebrew-dateOption">Hebrew Date</label>
@@ -75,7 +75,7 @@
             <div class="form-group mx-auto">
                 <div class="input-group">
                     <div class="input-group-text">Hebrew Month</div>
-                    <select id="combo-hebrewMonth" class="form-control" aria-label="Server">
+                    <select id="hebrew-hebrewMonth" class="form-control" aria-label="Server">
                         <option selected>Choose a month...</option>
                         <option value="1">Nisan</option>
                         <option value="2">Iyar</option>
@@ -94,14 +94,14 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group mx-auto">
                 <div class="input-group">
                     <div class="input-group-text">Hebrew Day</div>
                     <input type="text" id="hebrew-hebrewDay" class="form-control" placeholder="##"
                            aria-label="Username">
                 </div>
             </div>
-            <div class="form-group">
+            <div class="form-group mx-auto">
                 <div class="input-group">
                     <div class="input-group-text">Hebrew Year</div>
                     <input type="text" id="hebrew-hebrewYear" class="form-control" placeholder="####"
@@ -182,15 +182,23 @@
         </div>
         <div id="result"></div>
         <!-- Submit/Restart -->
-        <div class="vstack gap-2 col-4 mx-auto mt-5">
+        <div class="vstack gap-3 col-4 mx-auto mt-5">
             <button class="btn btn-primary" type="submit">Submit</button>
             <button class="btn btn-secondary" type="reset">Reset</button>  <!-- Needs to clear validation -->
+            <a href="ContactUs.php">
+                <button class="btn btn-outline-primary w-100" type="button">Contact Us</button>
+            </a>
         </div>
     </form>
+
 </main>
 <script crossorigin="anonymous"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../js/singleEntryEnglish.js"></script>
+<script src="../js/HebCal.js"></script>
+<script src="../js/SingleEntry/singleEntrySubmission.js"></script>
+<script src="../js/SingleEntry/SingleEntryValidation.js"></script>
+<script src="../js/SingleEntry/RadioButtonEvent.js"></script>
+
 </body>
 </html>
