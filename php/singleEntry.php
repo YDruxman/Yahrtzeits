@@ -19,8 +19,7 @@
             <div class="input-group flex-wrap">
                 <span class="input-group-text">English Name</span>
                 <input aria-label="Prefix" class="form-control" id="prefix" placeholder="Prefix" type="text">
-                <input aria-label="First Name" class="form-control" id="first" placeholder="First"
-                       type="text" required>
+                <input aria-label="First Name" class="form-control" id="first" placeholder="First"type="text" required>
                 <input aria-label="Last Name" class="form-control" id="last" placeholder="Last" type="text">
             </div>
         </div>

@@ -23,9 +23,7 @@ function setUpValidate() {
             } else {
                 markAsInvalid(inputElement)
             }
-
         })
-
     })
     // Each Method needs an eventlistener on change to then set up a validiation. Validate Calendar, dropdown and afterSundown button
     //TODO validateHebrewYear()
@@ -34,7 +32,6 @@ function setUpValidate() {
 
 function validateStringData(inputElement, regex) {
     return regex.test(inputElement)
-
 }
 
 function markAsValid(inputElement) {
@@ -57,9 +54,5 @@ function validateHebrewYear() {
             markAsValid(inputYearElement)
         else
             markAsInvalid(inputYearElement)
-
     })
-
-
 }
-
