@@ -2,7 +2,7 @@ const inputFieldsForValidation = [
     {id: "prefix", regex: /^([a-zA-Z0-9.'\- ]{1,25}|)$/, needValidation: true}, //Made it so that the prefix is either empty i.e. optional or matching the regex.
     {id: "first", regex: /^[a-zA-Z.]{1,25}$/, needValidation: true},
     {id: "last", regex: /^[a-zA-Z.]{1,25}$/, needValidation: true},
-    {id: "hebrewName", regex: /^[a-zA-Z.]{1,100}$/, needValidation: true},
+    {id: "hebrewName", regex: /^[a-zA-Z. ]{1,100}$/, needValidation: true},
     {id: "notes", regex: /^([a-zA-Z0-9.'\- ]{1,255}|)$/, needValidation: true},
     {id: "relatedTo", regex: /^([a-zA-Z.'\- ]{1,100}|)$/, needValidation: true},
     {id: "source", regex: /^[a-zA-Z.'\-]{1,100}$/, needValidation: true},

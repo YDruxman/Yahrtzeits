@@ -21,36 +21,69 @@ catch (Error $error){
     http_response_code(500);
     return;
 }
+date_default_timezone_set('America/New_York'); // Set the desired timezone
+$year = date("Y");
+$month = date("m");
+$day = date("d");
+
+// Initialize cURL session
+$curl = curl_init();
+
+// get Hebrew Year from API
+curl_setopt($curl, CURLOPT_URL, "https://www.hebcal.com/converter?cfg=json&gy=$year&gm=$month&gd=$day&g2h=1&strict=1");
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($curl, CURLOPT_HEADER, 0);
+$response = curl_exec($curl);
+
+// Check for errors in cURL execution
+if (curl_errno($curl)) {
+    echo 'Error:' . curl_error($curl);
+} else {
+
+    $HebrewDateFromAPI = json_decode($response, true);
+
+    // Use the data as needed
+    // For example, print the Hebrew date
+    $CurrentHebrewYear = $HebrewDateFromAPI['hy'];
+    echo $CurrentHebrewYear;
+}
+
+// Close cURL session
+curl_close($curl);
 
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $json = file_get_contents("php://input");  //using this instead of the traditional SuperVariable POST bc we are dealing with JSON
     $data = json_decode($json, true);
-    // Handle the received JSON data as needed (e.g., save it to a database)
-
 
 
     $errors = [];
 
     // Validate each field
-    $fields_to_check = [
-        'prefix' => 'string',
-        'first' => 'string',
-        'last' => 'string',
-        'hebrewName' => 'string',
-        'notes' => 'string',
-        'relatedTo' => 'string',
-        'source' => 'string',
-        'hebrewYear' => 'numeric',
-        'hebrewMonth' => 'numeric',
-        'hebrewDay' => 'numeric'
+    $patterns = [
+        'first' => '/^[a-zA-Z ]+$/',
+        'last' => '/^[a-zA-Z ]+$/',
+        'hebrewName' => '/[a-zA-Z. ]{1,100}$/',
+        'notes' => ' /^([a-zA-Z.\'\- ]{1,100}|)$/',
+        'relatedTo' => '/^([a-zA-Z.\'\- ]{1,100}|)$/',
+        'source' => '/^[a-zA-Z.\'\-]{1,100}$/',
+        'hebrewYear' => '^\d{4}$',
+        'hebrewMonth' => '^(Nissan|Iyar|Sivan|Tamuz|Av|Elul|Tishrei|Cheshvan|Kisleiv|Tevet|Shevat|Adar|AdarII)$',
+        'hebrewDay' => '/^(0[1-9]|[1-2][0-9]|3[0-1])$/'
     ];
 
-    foreach ($fields_to_check as $field => $type) {
-        if (!isset($data[$field]) || gettype($data[$field]) !== $type) {
+    foreach ($patterns as $field => $type) {
+        if (!isset($data[$field]) || gettype($data[$field]) !== $type ) {
             $errors[$field] = "Field $field must be of type $type";
         }
     }
+    if(!empty($CurrentHebrewYear)){
+        if ($data['hebrewYear'] <= $CurrentHebrewYear){
+            $errors['hebrewYearPastCurrentYear'] = "The Hebrew year must be before $CurrentHebrewYear which is the current Hebrew Year";
+        }
+
+    }
+
 
     if (empty($errors)) {
         // Extract values
@@ -90,7 +123,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 //    { "prefix": "Daniel", "first": "Daniel", "last": "Daniel", "hebrewName": "Daniel", "notes": "Daniel",
 //        "relatedTo": "Daniel", "source": "Daniel", "hebrew-dateOption": "on", "english-dateOption": "on",
 //        "combo-dateOption": "on", "hebrew-hebrewDay": "22", "hebrew-hebrewYear": "", "english-date": "",
-//        TODO No Name for sunset? "": "false",
 //        "combo-hebrewDay": "22", "combo-date": "" }
 
 
