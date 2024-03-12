@@ -76,19 +76,19 @@
                     <div class="input-group-text">Hebrew Month</div>
                     <select id="hebrew-hebrewMonth" class="form-control" aria-label="Server">
                         <option selected>Choose a month...</option>
-                        <option value="1">Nisan</option>
-                        <option value="2">Iyar</option>
-                        <option value="3">Sivan</option>
-                        <option value="4">Tammuz</option>
-                        <option value="5">Av</option>
-                        <option value="6">Elul</option>
-                        <option value="7">Tishrei</option>
-                        <option value="8">Cheshvan</option>
-                        <option value="9">Kislev</option>
-                        <option value="10">Tevet</option>
-                        <option value="11">Shevat</option>
-                        <option value="12">Adar</option>
-                        <option value="12">AdarII</option>
+                        <option value="Nisan">Nisan</option>
+                        <option value="Iyar">Iyar</option>
+                        <option value="Sivan">Sivan</option>
+                        <option value="Tamuz">Tamuz</option>
+                        <option value="Av">Av</option>
+                        <option value="Elul">Elul</option>
+                        <option value="Tishrei">Tishrei</option>
+                        <option value="Cheshvan">Cheshvan</option>
+                        <option value="Kislev">Kislev</option>
+                        <option value="Tevet">Tevet</option>
+                        <option value="Shevat">Shevat</option>
+                        <option value="Adar">Adar</option>
+                        <option value="AdarII">AdarII</option>
                     </select>
                 </div>
             </div>

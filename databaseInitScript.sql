@@ -37,7 +37,7 @@ VALUES ('Iyar', 'Iyar');
 INSERT INTO HebrewMonths (DisplayName, APIName)
 VALUES ('Sivan', 'Sivan');
 INSERT INTO HebrewMonths (DisplayName, APIName)
-VALUES ('Tammuz', 'Tammuz');
+VALUES ('Tamuz', 'Tamuz');
 INSERT INTO HebrewMonths (DisplayName, APIName)
 VALUES ('Av', 'Av');
 INSERT INTO HebrewMonths (DisplayName, APIName)
