@@ -6,6 +6,7 @@ let hebDay;
 const resultDiv = document.getElementById("result");
 
 
+
 //Perhaps this  pre submission validation can be majorly simplified by introducing an empty tag to the ID instead of just valid and invalid
 function PreSubmissionValidation() {
     let isFormValid = true
@@ -125,15 +126,15 @@ document.addEventListener("DOMContentLoaded", function () {
             formData["hebrewYear"] = hebYear
             formData["hebrewMonth"] = hebMonth
             formData["hebrewDay"] = hebDay
+            formData["UserTimeZone"] = Intl.DateTimeFormat().resolvedOptions().timeZone; //Ignore IDE error, resolvedOptions() works.
+
 
             console.log(formData)
             console.log(JSON.stringify(formData))
             // Make a POST request to the PHP backend with the JSON data
             void doA(formData);
-            // a
 
-            console.log("after doA")
-        //     ///
+            console.log("after the doA")
         }
     });
 
